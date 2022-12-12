@@ -5,6 +5,7 @@ import numpy as np
 import streamlit as st
 from io import BytesIO
 import streamlit.components.v1 as components
+import base64
 
 
 # DESIGN implement changes to the standard streamlit UI/UX
@@ -57,6 +58,16 @@ def audiorec_demo_app():
         # display audio data as received on the Python side
 
         st.audio(wav_bytes, format='audio/wav')
+    file_ = open("demo.gif", "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+    st.write("How it works:")
+    st.write("# Demo")
+    st.markdown(
+        f'<img src="data:image/gif;base64,{data_url}" alt="cat gif" width="350" height="600">',
+        unsafe_allow_html=True,
+    )
 
 
 if __name__ == '__main__':
