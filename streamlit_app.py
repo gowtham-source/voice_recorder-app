@@ -58,7 +58,7 @@ def audiorec_demo_app():
         # display audio data as received on the Python side
 
         st.audio(wav_bytes, format='audio/wav')
-    file_ = open("demo.gif", "rb")
+    file_ = open("./demo.gif", "rb")
     contents = file_.read()
     data_url = base64.b64encode(contents).decode("utf-8")
     file_.close()
